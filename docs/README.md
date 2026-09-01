@@ -38,11 +38,15 @@ Detaylı deploy talimatları (reverse proxy, gerçek veri değişimi vb.) için
 
 ## GitHub Pages ile canlı link
 
-Bu klasör tamamen statik olduğu için doğrudan GitHub Pages ile yayınlanabilir:
+Bu klasör tamamen statik olduğu için doğrudan GitHub Pages ile yayınlanabilir.
+Klasörün adı bilinçli olarak `docs` — Pages'in "Deploy from a branch"
+seçeneği yalnızca `/ (root)` veya `/docs`'u destekliyor, keyfi bir alt klasörü
+(`/html` gibi) seçemiyorsunuz.
 
 1. GitHub'da repo → **Settings → Pages**
-2. Source: `Deploy from a branch`, Branch: `main`, klasör: `/StenosAuto_Deploy/html` (Pages kök dizin dışını desteklemiyorsa bu klasörü ayrı bir `gh-pages` branch'ine veya repoya taşımak gerekir)
-3. Yayınlanan URL üzerinden dashboard doğrudan açılır.
+2. Source: `Deploy from a branch`, Branch: `main`, klasör: `/docs`, **Save**
+3. Bir-iki dakika içinde `https://<kullanıcı-adı>.github.io/<repo-adı>/`
+   adresinden dashboard doğrudan açılır.
 
 ## Gerçek veri
 
