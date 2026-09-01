@@ -1,0 +1,8 @@
+# Paket/derleme çıktıları — kaynak zaten versiyonlanıyor, tekrar arşivlemeye gerek yok
+*.zip
+
+# Python
+.venv/
+.venv_win/
+__pycache__/
+*.pyc
