@@ -1,0 +1,22 @@
+﻿Stenos Auto CSI/DSI Dashboard - Deploy Paketi
+
+.venv GEREKMEZ. Hedef ortamda sifirdan kurulur.
+
+A) Docker varsa:
+  docker build -t stenos-auto:latest .
+  docker run -d --name stenos-auto -p 8501:8501 stenos-auto:latest
+  -> http://SUNUCU_IP:8501
+  Reverse proxy kullanilirsa WebSocket acik olmali.
+
+B) Docker yoksa (Python 3.10-3.12):
+  python -m venv .venv
+  .venv\Scripts\activate          (Windows)
+  source .venv/bin/activate       (Linux/macOS)
+  pip install -r requirements.txt
+  python -m streamlit run app.py --server.address 0.0.0.0 --server.port 8501
+  -> http://SUNUCU_IP:8501
+
+Paket: app.py, requirements.txt, Dockerfile, docker-compose.yml, .dockerignore,
+Stenos_CSI_KrediKullanan.csv, Stenos_CSI_KrediKullanmayan.csv, Stenos_DSI_BayiCalisanlari.csv
+
+Not: Veriler demo CSV. Gercek veri gelince ayni isimli 3 CSV degistirilir.

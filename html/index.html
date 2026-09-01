@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="Açık">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stenos Auto | CSI &amp; DSI Dashboard</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚗</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="loading-overlay"><div class="loading-box">Anket verileri yükleniyor…</div></div>
+
+<div class="app-shell">
+
+  <button id="tema-btn" class="tema-toggle" title="Koyu temaya geç">🌙</button>
+
+  <div class="marka-bant">
+    <div class="marka-sol">
+      <div class="logo-rozet">SA</div>
+      <div>
+        <div class="marka-ad">Stenos Auto Finansman A.Ş.</div>
+        <div class="marka-alt">Müşteri &amp; Bayi Memnuniyet Araştırması · CSI &amp; DSI 2025-2026</div>
+      </div>
+    </div>
+    <div class="marka-sag">
+      <div class="ody-kutu">
+        <div class="ody-ad">Odysseus Araştırma</div>
+        <div class="ody-alt">Pazar Araştırma &amp; Analitik</div>
+      </div>
+      <div class="logo-rozet ody">OD</div>
+    </div>
+  </div>
+
+  <div class="filtre-bar" id="filtre-bar">
+    <div class="filtre-item filtre-tarih">
+      <label>Tarih Aralığı</label>
+      <div class="tarih-inputs">
+        <input type="date" id="f-tarih-bas">
+        <span>–</span>
+        <input type="date" id="f-tarih-son">
+      </div>
+    </div>
+    <div class="filtre-item" id="f-bolge-wrap"></div>
+    <div class="filtre-item" id="f-sehir-wrap"></div>
+    <div class="filtre-item" id="f-bayi-wrap"></div>
+    <div class="filtre-item" id="f-segment-wrap"></div>
+  </div>
+
+  <div id="hata-alani"></div>
+
+  <div id="genel-bakis" class="kpi-row grid-4"></div>
+
+  <div id="uyari-alani"></div>
+
+  <div class="stTabs" id="stTabs">
+    <div class="tab-list" id="tab-list">
+      <button class="tab-btn active" data-tab="1">🚗&nbsp; CSI · Kredi Kullananlar</button>
+      <button class="tab-btn" data-tab="2">💵&nbsp; CSI · Kredi Kullanmayanlar</button>
+      <button class="tab-btn" data-tab="3">🏢&nbsp; DSI · Bayi &amp; CRM Deneyimi</button>
+      <button class="tab-btn" data-tab="4">🎯&nbsp; Yönetici Özeti</button>
+    </div>
+    <div class="tab-panel active" id="tab-1"></div>
+    <div class="tab-panel" id="tab-2"></div>
+    <div class="tab-panel" id="tab-3"></div>
+    <div class="tab-panel" id="tab-4"></div>
+  </div>
+
+  <hr class="ayrac">
+  <div id="footer-caption" class="footer-caption"></div>
+
+</div>
+
+<script src="vendor/plotly.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

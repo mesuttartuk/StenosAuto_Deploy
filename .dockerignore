@@ -1,0 +1,10 @@
+.venv
+.venv_win
+**/__pycache__
+*.pyc
+.git
+.DS_Store
+*.pdf
+*.doc
+app_tema_klasik_YEDEK.py
+stenos_sentetik_veri_uretici.py

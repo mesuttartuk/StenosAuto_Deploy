@@ -1,0 +1,40 @@
+Stenos Auto CSI/DSI Dashboard - Statik HTML Deploy Paketi
+============================================================
+
+Bu paket, orijinal Streamlit uygulamasinin BIREBIR HTML/JS surumudur.
+Python / Streamlit RUNTIME GEREKMEZ. Sadece statik dosya sunucusu yeterlidir
+(Nginx, IIS, Apache, veya herhangi bir CDN / statik hosting).
+
+Tum hesaplamalar (filtreleme, NPS, ortalamalar, korelasyonlar) ve grafikler
+(Plotly.js - projeye gomulu, internet gerekmez) tarayicida calisir.
+
+A) Docker varsa:
+  docker build -t stenos-auto-html:latest .
+  docker run -d --name stenos-auto-html -p 8080:80 stenos-auto-html:latest
+  -> http://SUNUCU_IP:8080
+
+B) Docker yoksa - herhangi bir statik dosya sunucusu:
+  Bu klasorun tamamini (index.html, css/, js/, vendor/, data/) bir web
+  sunucusunun kok dizinine kopyalayin. Ornekler:
+
+  - Nginx:    /usr/share/nginx/html icine kopyalayin
+  - IIS:      wwwroot icine kopyalayin
+  - Python (gecici test icin):
+      python -m http.server 8080
+      -> http://localhost:8080
+
+  NOT: index.html dosyasini cift tiklayip dogrudan file:// ile acmayin -
+  bazi tarayicilar CSV fetch() istegini guvenlik geregi engeller. Mutlaka
+  bir http(s):// sunucusu uzerinden servis edin (yukaridaki yontemlerden biri).
+
+Paket icerigi: index.html, css/style.css, js/app.js, vendor/plotly.min.js,
+data/Stenos_CSI_KrediKullanan.csv, data/Stenos_CSI_KrediKullanmayan.csv,
+data/Stenos_DSI_BayiCalisanlari.csv, Dockerfile, docker-compose.yml, .dockerignore
+
+Gercek veri gelince: data/ klasorundeki 3 CSV'yi AYNI ISIMLERLE degistirin.
+Kolon adlari ve yapisi (Anket_Tarihi, Sehir, Bolge, Acente_Adi, Segment vb.)
+orijinal formda kalmalidir - kod bu kolon adlarina gore calisir.
+
+Reverse proxy (Nginx Proxy Manager vb.) kullanilirsa ozel bir ayar gerekmez;
+WebSocket/CORS/XSRF ayarlarina ihtiyac YOKTUR (Streamlit'in aksine bu tamamen
+statik bir sayfadir).

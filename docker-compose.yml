@@ -1,0 +1,20 @@
+services:
+  stenos-auto:
+    build: .
+    image: stenos-auto:latest
+    container_name: stenos-auto
+    restart: unless-stopped
+    # Host'a port açılmaz; Nginx Proxy Manager üzerinden yayınlanır
+    expose:
+      - "8501"
+    networks:
+      - nginx_default
+    # CSV'ler image içinde; sunucuda dosya güncellenirse volume ile yansır
+    volumes:
+      - ./Stenos_CSI_KrediKullanan.csv:/app/Stenos_CSI_KrediKullanan.csv:ro
+      - ./Stenos_CSI_KrediKullanmayan.csv:/app/Stenos_CSI_KrediKullanmayan.csv:ro
+      - ./Stenos_DSI_BayiCalisanlari.csv:/app/Stenos_DSI_BayiCalisanlari.csv:ro
+
+networks:
+  nginx_default:
+    external: true
